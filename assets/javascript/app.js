@@ -1,3 +1,7 @@
+var correct=0;
+var incorrect=0;
+var missed=0;
+
 var totalTime = 180;
 var totalMin = parseInt(totalTime/60);
 var totalSec = parseInt(totalTime%60);
@@ -20,12 +24,11 @@ function Start() {
     document.getElementById("mainQuiz").style.visibility = "visible";
 }
 
-
-
 function onSubmit(){
     var score=0;
     var NumberofQuestions = 8;
-    var correctAnswers = ['d', 'a', 'c', 'c', 'a', 'b', 'd', 'c'];
+    var correctAnswer = ['d', 'a', 'c', 'c', 'a', 'b', 'd', 'c'];
+    
 
     var q1 = document.forms['quiz']['q1'].value;
     var q2 = document.forms['quiz']['q2'].value;
@@ -42,12 +45,15 @@ function onSubmit(){
         }
     }
     for(var i = 1; i <= NumberofQuestions; i++){
-        if(eval('q' + i) == correctAnswers[i - 1]){
+        if(eval('q' + i) === correctAnswer[i-1]){
             correct++;
         }
         else
             incorrect++;
     }
+        if(eval('q' + i) == ''){
+            missed++;
+        }
 
     var finalScore = document.getElementById('results.html')
     results.innerHTML=("<h2>Correct Answers: " + correct + "</h2>" <br> "<h2>Incorrect Answers:" + incorrect + "</h2>")
