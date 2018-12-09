@@ -25,7 +25,6 @@ function Start() {
 }
 
 function onSubmit(){
-    var score=0;
     var NumberofQuestions = 8;
     var correctAnswer = ['d', 'a', 'c', 'c', 'a', 'b', 'd', 'c'];
     
@@ -39,11 +38,8 @@ function onSubmit(){
     var q7 = document.forms['quiz']['q7'].value;
     var q8 = document.forms['quiz']['q8'].value;
 
-    for(var i = 1; i <= NumberofQuestions; i++){
-        if(eval('q' + i) == ''){
-            alert("You missed question number " + i);
-        }
-    }
+    
+    
     for(var i = 1; i <= NumberofQuestions; i++){
         if(eval('q' + i) === correctAnswer[i-1]){
             correct++;
@@ -56,7 +52,5 @@ function onSubmit(){
         }
 
     var finalScore = document.getElementById('results.html')
-    results.innerHTML=("<h2>Correct Answers: " + correct + "</h2>" <br> "<h2>Incorrect Answers:" + incorrect + "</h2>")
-    alert('You scored ' + score + ' out of ' + NumberofQuestions)
-    return false;
+    results.innerHTML=("<h2>Correct Answers: " + correct + "</h2>" <br> "<h2>Incorrect Answers: " + incorrect + "</h2>" <br> "<h2>Missed Questions: " + missed + "</h2>")
 }
